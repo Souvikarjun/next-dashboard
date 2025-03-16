@@ -2,7 +2,7 @@ import { Sidebar } from "../ui/dashboard/sidebar/sidebar"
 import { Navbar } from "../ui/dashboard/navbar/navbar"
 import styles from "../ui/dashboard/dashboard.module.css"
 
-export const layout = ({children}) => {
+const layout = ({children}) => {
   return (
     <div className={styles.container}>
         <div className={styles.menu}><Sidebar/></div>
@@ -13,3 +13,5 @@ export const layout = ({children}) => {
     </div>
   )
 }
+
+export default layout
