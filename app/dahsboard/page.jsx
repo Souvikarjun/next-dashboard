@@ -7,14 +7,15 @@ import styles from "../ui/dashboard/dashboard.module.css"
 const Dashboard = () => {
   return (
     <div className={styles.wrapper}>
-      <div className={styles.main}></div>
-      <div className={styles.cards}>
-        <Card />
-        <Card />
-        <Card />
+      <div className={styles.main}>
+        <div className={styles.cards}>
+          <Card />
+          <Card />
+          <Card />
+        </div>
+        <Transaction />
+        <Chart />
       </div>
-      <Transaction />
-      <Chart />
       <div className={styles.side}>
         <Rightbar />
       </div>
