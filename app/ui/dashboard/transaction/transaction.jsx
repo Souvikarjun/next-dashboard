@@ -20,7 +20,7 @@ function Transaction() {
             <td>
               <div className={styles.user}>  
               <Image src="/NoAvatar.jpg" alt="no avatar" width={40} height={40} className={styles.userImage}/> 
-              John Doe
+              hello
               </div>
             </td>
             <td>
@@ -33,7 +33,7 @@ function Transaction() {
             <td>
               <div className={styles.user}>  
               <Image src="/NoAvatar.jpg" alt="no avatar" width={40} height={40} className={styles.userImage}/> 
-              John Doe
+              hello
               </div>
             </td>
             <td>
@@ -46,7 +46,7 @@ function Transaction() {
             <td>
               <div className={styles.user}>  
               <Image src="/NoAvatar.jpg" alt="no avatar" width={40} height={40} className={styles.userImage}/> 
-              John Doe
+              hello
               </div>
             </td>
             <td>
@@ -59,7 +59,7 @@ function Transaction() {
             <td>
               <div className={styles.user}>  
               <Image src="/NoAvatar.jpg" alt="no avatar" width={40} height={40} className={styles.userImage}/> 
-              John Doe
+              hello
               </div>
             </td>
             <td>

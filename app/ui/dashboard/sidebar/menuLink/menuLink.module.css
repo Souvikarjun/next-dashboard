@@ -7,6 +7,6 @@
     border-radius: 10px;
 }
 
-.conteiner:hover, .active{
+.container:hover, .active{
     background-color: #2e374a;
 }
