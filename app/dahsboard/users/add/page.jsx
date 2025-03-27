@@ -1,6 +1,6 @@
 import styles from "@/app/ui/dashboard/users/addUser/addUser.module.css"
 
-const AddProduct = () => {
+const AddUser = () => {
   return (
     <div className={styles.container}>
         <form action="" className={styles.form}>
@@ -25,4 +25,4 @@ const AddProduct = () => {
   )
 }
 
-export default AddProduct;
+export default AddUser;

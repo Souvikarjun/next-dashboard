@@ -3,8 +3,11 @@ import styles from "@/app/ui/dashboard/users/user.module.css"
 import Link from "next/link"
 import Image from "next/image"
 import Pagination from "@/app/ui/dashboard/pagination/pagination"
+import { fetchUsers } from "@/app/lib/data"
 
-const Users = () => {
+const Users = async () => {
+  const users = await fetchUsers();
+  console.log(users)
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -40,7 +43,7 @@ const Users = () => {
             <td>active</td>
             <td>
               <div className={styles.buttons}>
-              <Link href="/">
+              <Link href="./users/test">
                 <button className={`${styles.button} ${styles.view}`}>View</button>
               </Link>
                 <button className={`${styles.button} ${styles.delete}`}>Delete</button>
@@ -62,7 +65,7 @@ const Users = () => {
             <td>active</td>
             <td>
               <div className={styles.buttons}>
-              <Link href="/">
+              <Link href="./users/test">
                 <button className={`${styles.button} ${styles.view}`}>View</button>
               </Link>
                 <button className={`${styles.button} ${styles.delete}`}>Delete</button>
