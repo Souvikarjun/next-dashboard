@@ -7,7 +7,7 @@ import { fetchUsers } from "@/app/lib/data"
 
 const Users = async () => {
   const users = await fetchUsers();
-  console.log(users)
+  // console.log(users)
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -28,50 +28,28 @@ const Users = async () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
+          {users.map((user) => (
+            <tr key = {user.id}>
             <td>
               <div className={styles.user}>
-                <Image src="/NoAvatar.jpg" alt="No avatar" width={40} height={40} className={styles.userImage}/>
-                Ghosty
+                <Image src={user.img || "/NoAvatar.jpg"} alt="No avatar" width={40} height={40} className={styles.userImage}/>
+                {user.username}
               </div>
             </td>
-            <td>
-              ghostheaddead@gmail.com
-            </td>
-            <td>23/3/2025</td>
-            <td>Admin</td>
-            <td>active</td>
+            <td>{user.email}</td>
+            <td>{user.createdAt?.toString().slice(4,16)}</td>
+            <td>{user.isAdmin ? "Admin" : "Client"}</td>
+            <td>{user.isActive ? "Active" : "Passive"}</td>
             <td>
               <div className={styles.buttons}>
-              <Link href="./users/test">
+              <Link href={`./users/${user.id}`}>
                 <button className={`${styles.button} ${styles.view}`}>View</button>
               </Link>
                 <button className={`${styles.button} ${styles.delete}`}>Delete</button>
               </div>
             </td>
           </tr>
-          <tr>
-            <td>
-              <div className={styles.user}>
-                <Image src="/NoAvatar.jpg" alt="No avatar" width={40} height={40} className={styles.userImage}/>
-                Ghosty
-              </div>
-            </td>
-            <td>
-              ghostheaddead@gmail.com
-            </td>
-            <td>23/3/2025</td>
-            <td>Admin</td>
-            <td>active</td>
-            <td>
-              <div className={styles.buttons}>
-              <Link href="./users/test">
-                <button className={`${styles.button} ${styles.view}`}>View</button>
-              </Link>
-                <button className={`${styles.button} ${styles.delete}`}>Delete</button>
-              </div>
-            </td>
-          </tr>
+        ))}
         </tbody>
         </table>
 

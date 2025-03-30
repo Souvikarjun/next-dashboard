@@ -1,7 +1,9 @@
+import { fetchUsers } from "@/app/lib/data"
 import styles from  "@/app/ui/dashboard/users/singleUser/sigleUser.module.css"
 import Image from "next/image"
 
-export default function SingleUserPage() {
+export default async function SingleUserPage() {
+    const users = await fetchUsers()
   return (
     <div className={styles.container}>
         <div className={styles.infoContainer}>
@@ -11,6 +13,7 @@ export default function SingleUserPage() {
             Ghost
         </div>
         <div className={styles.formContainer}>
+        
             <form action="" className={styles.form}>
                 <label>Usename</label>
                 <input type="text" name="uername" placeholder="Ghost"/>
