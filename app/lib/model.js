@@ -46,13 +46,13 @@ const userSchema = new mongoose.Schema({
 )
 
 const productSchema = new mongoose.Schema({
-    titel:{
+    title:{
         type:String,
         required:true,
         unique:true,
     },
 
-    desc:{
+    discription:{
         type: String,
         required: true,
     },
