@@ -52,7 +52,7 @@ const productSchema = new mongoose.Schema({
         unique:true,
     },
 
-    discription:{
+    description:{
         type: String,
         required: true,
     },
@@ -76,6 +76,9 @@ const productSchema = new mongoose.Schema({
     },
     size:{
         type:String,
+    },
+    catagory:{
+        type: String,
     }
 
 },
