@@ -6,9 +6,9 @@ import Pagination from "@/app/ui/dashboard/pagination/pagination"
 import { fetchUsers } from "@/app/lib/data"
 
 const Users = async ({searchParams}) => {
-
-  const q = await searchParams?.q || "";
-  const page = await searchParams?.page || 1;
+  const params = await searchParams
+  const q = await params?.q || "";
+  const page = await params?.page || 1;
 
   const [users,count] = await fetchUsers(q, page);
     const newCount = count.length
