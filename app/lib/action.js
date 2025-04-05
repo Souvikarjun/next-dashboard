@@ -13,7 +13,7 @@ export const addUser = async (formData) => {
     const hashedPass = await bcrypt.hash(password,salt)
     try{
         connectToDB()
-        const newUser = new User({
+        const newUser = await new User({
             username,
             email,
             password:hashedPass,
@@ -23,7 +23,7 @@ export const addUser = async (formData) => {
             isActive,
         })
 
-        await newUser.save()
+        newUser.save()
     }
     catch(err){
         console.log(err)
@@ -35,25 +35,42 @@ export const addUser = async (formData) => {
 
 export const addProduct = async (formData) => {
     const {title, price, stock, catagory, description, color, size} = Object.fromEntries(formData)
-    console.log(formData)
     try{
         connectToDB()
-        const newProduct = new Product({
-            title,
-            price:parseFloat(price),
-            stock:parseInt(stock),
-            catagory,
-            description,
-            color,
-            size,
+        const newProduct = await new Product({
+            title, price, stock, catagory, description, color, size,
         })
 
-        await newProduct.save()
+        newProduct.save()
     }
     catch(err){
         console.log(err)
-        throw new Error("Failed to create product")
+        throw new Error("Failed to create Product")
     }
     revalidatePath("/dahsboard/products")
     redirect("/dahsboard/products")
 }
+// export const addProduct = async (formData) => {
+//     const {title, price, stock, catagory, description, color, size} = Object.fromEntries(formData)
+//     console.log(formData)
+//     try{
+//         connectToDB()
+//         const newProduct = new Product({
+//             title,
+//             price:parseFloat(price),
+//             stock:parseInt(stock),
+//             catagory,
+//             description,
+//             color,
+//             size,
+//         })
+
+//         await newProduct.save()
+//     }
+//     catch(err){
+//         console.log(err)
+//         throw new Error("Failed to create product")
+//     }
+//     revalidatePath("/dahsboard/products")
+//     redirect("/dahsboard/products")
+// }

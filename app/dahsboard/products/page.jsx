@@ -10,9 +10,8 @@ const Products = async ({searchParams}) => {
   const q = await searchParams?.q || "";
   const page = await searchParams?.page || 1;
   
-  const products = await fetchProducts(q, page);
-  console.log(products)
-  const count = products.length
+  const [products,count] = await fetchProducts(q, page);
+  const newCount = count.length
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -59,7 +58,7 @@ const Products = async ({searchParams}) => {
           ))}
         </tbody>
         </table>
-        <Pagination count={count}/>
+        <Pagination count={newCount}/>
     </div>
   )
 }

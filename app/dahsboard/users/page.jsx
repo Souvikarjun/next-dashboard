@@ -10,8 +10,8 @@ const Users = async ({searchParams}) => {
   const q = await searchParams?.q || "";
   const page = await searchParams?.page || 1;
 
-  const users = await fetchUsers(q, page);
-  const count = users.length
+  const [users,count] = await fetchUsers(q, page);
+    const newCount = count.length
   // console.log(users)
   return (
     <div className={styles.container}>
@@ -58,7 +58,7 @@ const Users = async ({searchParams}) => {
         </tbody>
         </table>
 
-        <Pagination count={count}/>
+        <Pagination count={newCount}/>
     </div>
   )
 }

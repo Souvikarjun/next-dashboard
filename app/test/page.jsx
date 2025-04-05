@@ -4,7 +4,6 @@ const Page = () => {
     
     const handleForm = async (formData) =>{
         "use server";
-        console.log(formData)
         const username = formData.get("username")
         console.log("hello ", username)
     }
