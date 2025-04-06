@@ -3,8 +3,9 @@
 import { revalidatePath } from "next/cache"
 import { Product, User } from "./model"
 import connectToDB from "./utils"
-import { redirect } from "next/navigation"
+import { notFound, redirect } from "next/navigation"
 import bcrypt from "bcrypt"
+import { fetchProducts } from "./data"
 
 export const addUser = async (formData) => {
     const {username, email, password, phone, address, isAdmin, isActive} = Object.fromEntries(formData)
@@ -50,27 +51,44 @@ export const addProduct = async (formData) => {
     revalidatePath("/dahsboard/products")
     redirect("/dahsboard/products")
 }
-// export const addProduct = async (formData) => {
-//     const {title, price, stock, catagory, description, color, size} = Object.fromEntries(formData)
-//     console.log(formData)
-//     try{
-//         connectToDB()
-//         const newProduct = new Product({
-//             title,
-//             price:parseFloat(price),
-//             stock:parseInt(stock),
-//             catagory,
-//             description,
-//             color,
-//             size,
-//         })
 
-//         await newProduct.save()
-//     }
-//     catch(err){
-//         console.log(err)
-//         throw new Error("Failed to create product")
-//     }
-//     revalidatePath("/dahsboard/products")
-//     redirect("/dahsboard/products")
-// }
+
+export const deleteProduct = async (formData) => {
+    const {id} = Object.fromEntries(formData)
+    const products = await Product.find();
+    async function deleteProd(){ await Product.findByIdAndDelete(id)};
+    try{
+        // for(let i = 0; i<3; i++){
+            connectToDB();
+            // if(products.includes() ){
+                deleteProd()
+            //     break;
+            // }
+            // setTimeout(console.log("retrying"),1000)
+        // }
+    }
+    catch(err){
+        console.log(err)
+        throw new Error("Failed to delete product")
+    }
+    
+    revalidatePath("/dahsboard/products")
+    redirect("/dahsboard/products")
+}
+
+
+export const deleteUser = async (formData) => {
+    const {id} = Object.fromEntries(formData)
+    async function deleteUs(){ await User.findByIdAndDelete(id)};
+    
+    try{
+        connectToDB();
+        deleteUs();
+    }
+    catch(err){
+        console.log(err)
+        throw new Error("Failed to delete product")
+    }
+    revalidatePath("/dahsboard/users")
+    redirect("/dahsboard/users")
+}

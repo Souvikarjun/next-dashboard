@@ -4,11 +4,12 @@ import Link from "next/link"
 import Image from "next/image"
 import Pagination from "@/app/ui/dashboard/pagination/pagination"
 import { fetchUsers } from "@/app/lib/data"
+import { deleteUser } from "@/app/lib/action"
 
 const Users = async ({searchParams}) => {
   const params = await searchParams
-  const q = await params?.q || "";
-  const page = await params?.page || 1;
+  const q = params?.q || "";
+  const page = params?.page || 1;
 
   const [users,count] = await fetchUsers(q, page);
     const newCount = count.length
@@ -50,7 +51,10 @@ const Users = async ({searchParams}) => {
               <Link href={`./users/${user.id}`}>
                 <button className={`${styles.button} ${styles.view}`}>View</button>
               </Link>
+              <form action={deleteUser}>
+                <input type="hidden" value={user.id} name="id"/>
                 <button className={`${styles.button} ${styles.delete}`}>Delete</button>
+              </form>
               </div>
             </td>
           </tr>
